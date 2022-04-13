@@ -8,7 +8,7 @@ const base = new Airtable({
 }).base(AIRTABLE_BASE_ID);
 
 exports.handler = async function(event, context) {
-    const {table } = JSON.parse(event.body);
+    const {table} = event.event.queryStringParameters;
 
     const records = await base(table).select({
         view: 'Grid view'
