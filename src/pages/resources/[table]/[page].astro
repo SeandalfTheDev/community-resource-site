@@ -14,8 +14,6 @@ export async function getResources(table) {
     const data = await response.json();
     const records = data.records;
 
-    //console.log(records[0]);
-
     return records;
 }
 

@@ -18,7 +18,7 @@ const apiKey = import.meta.env.PUBLIC_API_KEY;
 ---
 <MainLayout>
     <h2 class="text-xl text-center font-bold">New Resource</h2>
-    <form id="new-resource-form" class="mt-8" method="post" action="/" aria-roledescription="New Resouce Form">
+    <form id="new-resource-form" class="mt-8" method="post" action="/.netlify/functions/create-community-resource" aria-roledescription="New Resouce Form">
         <div class="flex justify-center">
             <div class="mb-3 xl:w-96">
                 <input name="table" hidden value={table} />
