@@ -1,0 +1,31 @@
+---
+const { page } = Astro.props;
+
+let pageNumbers: number[] = [];
+
+for (let i = 1; i <= page.lastPage; i++) {
+    pageNumbers.push(i);
+}
+---
+<div class="flex justify-center mt-4">
+    <nav aria-label="Pagination navigation">
+        <ul class="flex space-x-1">
+			{
+                page.url.prev && 
+                <li class="page-item">
+                    <a href={page.url.prev} class="relative block py-1.5 px-3 border-0 bg-transparent outline-none transition-all duration-300 rounded-full text-gray-800 hover:text-gray-800 hover:bg-gray-200 focus:shadow-none">
+                        Previous
+                    </a>
+                </li>
+            }
+            {
+                page.url.next && 
+                <li class="page-item">
+                    <a href={page.url.next} class="relative block py-1.5 px-3 border-0 bg-transparent outline-none transition-all duration-300 rounded-full text-gray-800 hover:text-gray-800 hover:bg-gray-200 focus:shadow-none">
+                        Next
+                    </a>
+                </li>
+            }
+        </ul>
+    </nav>
+</div>

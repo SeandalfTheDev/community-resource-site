@@ -1,0 +1,16 @@
+---
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import Navbar from '../components/Navbar.astro'
+---
+<html>
+  <Header title="Community Resources" />
+  <body>
+    <Navbar />
+    <h1 class="font-bold text-2xl text-center p-2">Bootcamp 2022 Community Resources</h1>
+    <article>
+      <slot />
+    </article>
+    <Footer />
+  </body>
+</html>

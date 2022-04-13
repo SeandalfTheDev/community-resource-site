@@ -1,0 +1,86 @@
+---
+import MainLayout from '../../../layouts/MainLayout.astro';
+
+export function getStaticPaths() {
+    return [
+        {params: { table: 'HTML'}},
+        {params: { table: 'CSS'}},
+        {params: { table: 'JavaScript'}},
+        {params: { table: 'Frameworks'}},
+        {params: { table: 'Accessibility'}},
+        {params: { table: 'General'}},
+    ];
+}
+
+const { table } = Astro.params;
+const baseId = import.meta.env.PUBLIC_BASE_ID;
+const apiKey = import.meta.env.PUBLIC_API_KEY;
+---
+<MainLayout>
+    <h2 class="text-xl text-center font-bold">New Resource</h2>
+    <form id="new-resource-form" class="mt-8" method="post" action="/" aria-roledescription="New Resouce Form">
+        <div class="flex justify-center">
+            <div class="mb-3 xl:w-96">
+                <input name="table" hidden value={table} />
+                <label
+                        for="title-input"
+                        class="form-label inline-block mb-2 text-gray-700 text-xl mt-6"
+                >Resource Title</label>
+                <input
+                        id="resource-title"
+                        name="title"
+                        type="text"
+                        class="
+                          form-control
+                          block
+                          w-full
+                          px-4
+                          py-2
+                          text-xl
+                          font-normal
+                          text-gray-700
+                          bg-white bg-clip-padding
+                          border border-solid border-gray-300
+                          rounded
+                          transition
+                          ease-in-out
+                          mt-0
+                          focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
+                        id="title-input"
+                        required
+                        placeholder="title"
+                />
+                <label
+                        for="url-input"
+                        class="form-label inline-block mb-2 text-gray-700 text-xl mt-6"
+                >Resource Url</label>
+                <input
+                        id="resource-url"
+                        name="url"
+                        type="text"
+                        class="
+                          form-control
+                          block
+                          w-full
+                          px-4
+                          py-2
+                          text-xl
+                          font-normal
+                          text-gray-700
+                          bg-white bg-clip-padding
+                          border border-solid border-gray-300
+                          rounded
+                          transition
+                          ease-in-out
+                          mb-6
+                          focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
+                        id="url-input"
+                        required
+                        placeholder="url"
+                />
+                <button type="button" onclick="createResource(event)" class="inline-block px-6 py-2.5 bg-green-500 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-green-600 hover:shadow-lg focus:bg-green-600 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-green-700 active:shadow-lg transition duration-150 ease-in-out">Submit</button>
+                <a href={`/resources/${table}/1`} class="inline-block px-6 py-2.5 bg-yellow-500 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-yellow-600 hover:shadow-lg focus:bg-yellow-600 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-yellow-700 active:shadow-lg transition duration-150 ease-in-out">Cancel</a>
+            </div>
+        </div>
+    </form>
+</MainLayout>
